@@ -204,6 +204,8 @@ class ManagerController {
             this[VIEW].bindShowDish(this.handleDisplayDish);
         }
 
+        
+
     }
 }
 
