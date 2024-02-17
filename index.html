@@ -16,7 +16,7 @@
     <main>
         <header class="header">
             <div class="header__logo">
-                <img onclick="mostrarInicio()" src="./img/logo.png" alt="logo" class="header__logo-image" id="logo">
+                <img  src="./img/logo.png" alt="logo" class="header__logo-image" id="logo">
             </div>
             <div class="header__content">
                 <h1 class="header__title">RESTAURANTE GASTROMANCHA</h1>
@@ -36,12 +36,12 @@
         <nav class="fixed-nav">
             <div class="menu-wrapper">
                 <ul class="menu">
-                    <li class="list"><a onclick="mostrarInicio()" href="#inicio-section">INICIO</a></li>
-                    <li class="list"><a onclick="mostrarNosotros()" href="#nosotros-section">NOSOTROS</a></li>
+                    <li class="list"><a href="#inicio-section">INICIO</a></li>
+                    <li class="list"><a href="#nosotros-section">NOSOTROS</a></li>
                     <li class="list"><a href="#">UBICACIÓN</a></li>
                     <li class="list"><a href="#">MENÚ</a></li>
                     <li class="list"><a href="#">CONTACTO</a></li>
-                    <li class="list"><a onclick="mostrarReserva()" href="#reserva-section">RESERVAS</a></li>
+                    <li class="list"><a href="#reserva-section">RESERVAS</a></li>
                 </ul>
             </div>
         </nav>
@@ -97,74 +97,6 @@
                     </div>
             </section>
         </div>
-        <section id="nosotros-section" class="nosotros" itemscope itemtype="http://schema.org/Organization">
-            <header>
-                <h1>UNA EXPLOSION DE SABORES CON NUESTRO TOQUE ESPECIAL</h1><br>
-            </header>
-            <article itemprop="description">
-                
-                    <h2>Descubre la Esencia de Castilla-La Mancha en Cada Bocado</h2>
-        
-                    <p>En <span itemprop="name">Gastromancha</span>, nos enorgullece ofrecerte una experiencia gastronómica auténtica, donde
-                        cada plato cuenta una historia arraigada en la tradición y el sabor inconfundible de Castilla-La
-                        Mancha.
-                        Nuestra Filosofía.</p>
-        
-                    <p>En el corazón de nuestra cocina yace un profundo respeto por la tierra y sus ingredientes. Nos
-                        dedicamos.
-                        a preservar las recetas tradicionales, realzando los sabores locales con un toque de creatividad
-                        contemporánea.
-                        La Tierra de Don Quijote en tu Plato.</p>
-        
-                    <p>Desde las vastas llanuras doradas hasta las colinas salpicadas de viñedos, Castilla-La Mancha es una
-                        región rica en diversidad gastronómica. En cada plato, capturamos la esencia de esta tierra única,
-                        llevando a tu mesa la auténtica pasión culinaria de la región.
-                        Nuestro Compromiso.</p>
-        
-                    <div id="imagen3D-container" class="imagen3D-container"></div>
-        
-                    <p>En Gastromancha, no solo te ofrecemos una comida excepcional, sino también una experiencia
-                        memorable llena de hospitalidad y calidez castellano-manchega. Cada visita es una oportunidad para
-                        sumergirte en la cultura y el sabor de esta región única.
-                        Únete a Nosotros</p>
-        
-                    <p>Te invitamos a embarcarte en un viaje culinario a través de Castilla-La Mancha en Gastromancha.
-                        Descubre la magia de nuestra tierra en cada bocado y déjate llevar por la pasión y el
-                        encanto de nuestra cocina.</p>
-        
-                    <h2>¡Bienvenido a Gastromancha, donde cada plato es un tributo a la belleza y la autenticidad
-                        de Castilla-La Mancha!</h2>
-                
-            </article>
-        </section>
-        
-        <div id="reserva-section">
-            <h1>¿Deseando probar nuestros platos? ¡Reserva YA!</h1>
-            <form>
-                <label for="nombre">Nombre:</label>
-                <input type="text" id="nombre" name="nombre" placeholder="Nombre" required pattern="[A-Za-zÁÉÍÓÚáéíóú\s]+">
-
-                <label for="email">Correo Electrónico:</label>
-                <input type="email" id="email" name="email" required>
-
-                <label for="telefono">Teléfono:</label>
-                <input type="tel" id="telefono" name="telefono" required pattern="[0-9]{9}">
-
-                <label for="fecha">Fecha:</label>
-                <input type="date" id="fecha" name="fecha" required>
-
-                <label for="hora">Hora:</label>
-                <input type="time" id="hora" name="hora" required>
-
-                <label for="personas">Número de Personas:</label>
-                <input type="number" id="personas" name="personas" min="1" required>
-
-                <label for="info">Información adicional: </label>
-                <textarea name="info" id="info" cols="10" rows="10" placeholder="Información adicional"></textarea>
-
-                <input type="submit" value="Reservar Mesa">
-            </form>
-        </div>
     </main>
     <footer>
         <div class="footer-container">
@@ -185,8 +117,7 @@
             <img src="./img/gmo.png" alt="gmo">
         </div>
     </footer>
-    <script src="./js/script.js"></script>
-    <script type="module" src="./js/360.js"></script>
+    <script type="module" src="./js/RestaurantTest.js"></script>
 </body>
 
 </html>
