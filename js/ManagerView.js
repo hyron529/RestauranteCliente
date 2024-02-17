@@ -131,6 +131,25 @@ class ManagerView {
         if (this.initZone.children.length > 0) this.initZone.children[0].remove();
 
         const div = document.createElement("div");
+
+        div.classList.add("row");
+        div.id = "random-dish";
+
+        div.insertAdjacentHTML(
+            "beforeend",
+            `
+                <h1>Los mejores platos típicos</h1>
+            `
+        );
+
+        for(const dish of dishes){
+            div.insertAdjacentHTML(
+                "beforeend",
+                `
+                    
+                `
+            );
+        }
     }
 
 

@@ -1,4 +1,4 @@
-import { Coordinate } from "./Coordinate.js";
+import { Coordinate } from "./objects/Coordinate.js";
 
 const MODEL = Symbol('ManagerModel');
 const VIEW = Symbol('ManagerView');
