@@ -1,0 +1,397 @@
+body {
+    background-color: #BEE3DB;
+}
+
+.header {
+    display: grid;
+    grid-template-columns: auto minmax(0, 4fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr);
+    grid-template-areas: "logo user title language cart";
+    align-items: center;
+    gap: 10px;
+    background-color: #8CDED9;
+    border-radius: 20px;
+}
+
+.header h1{
+    font-family: 'titulos', sans-serif;
+    font-size: 50px;
+}
+
+.header h2{
+    font-family: 'textos', sans-serif;
+    font-size: 20px;
+}
+
+.header__logo img {
+    width: 100%;
+    height: auto;
+    max-width: 200px;
+    cursor: pointer;
+}
+
+.header__user img,
+.header__language img,
+.header__cart img {
+    width: 100%;
+    height: auto;
+    max-width: 45px;
+    cursor: pointer;
+}
+
+.header__subtitle {
+    text-indent: 50px;
+}
+
+.header__content {
+    margin-left: 3%;
+}
+
+.menu-wrapper {
+    background-color: #8CDED9;
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+    border: solid black 3px;
+    border-radius: 20px;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.menu {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.menu li {
+    display: inline-block;
+    margin: 0 20px;
+}
+
+.menu li a {
+    text-decoration: none;
+    padding: 10px;
+    color: #000;
+}
+
+.menu li a:hover {
+    background-color: #D3BC90;
+    color: #000;
+    border-radius: 20px;
+}
+
+nav {
+    position: relative;
+    z-index: 2;
+}
+
+.list{
+    font-family: 'titulos', sans-serif;
+    font-size: 20px;
+}
+
+.image-section {
+    margin-top: -45px;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+}
+
+.molinos-image {
+    width: 75%;
+    max-width: 100%;
+    height: auto;
+    max-height: 700px;
+    border-radius: 20px;
+}
+
+.flecha-left,
+.flecha-right {
+    position: absolute;
+    top: 50%;
+}
+
+.flecha-left {
+    left: 15%;
+    width: 6%;
+    max-width: 6%;
+    transform: translateY(-50%) rotate(180deg);
+    cursor: pointer;
+}
+
+.flecha-right {
+    right: 15%;
+    width: 6%;
+    max-width: 6%;
+    transform: translateY(-50%);
+    cursor: pointer;
+}
+
+.day-menu {
+    text-align: center;
+    margin: 4% auto 0;
+    width: 50%;
+    max-width: 50%;
+    border-radius: 20px;
+    padding-left: 60px;
+    padding-right: 60px;
+    padding-top: 30px;
+    background-color: #D3BC90;
+    position: relative;
+    overflow: visible;
+}
+
+.day-menu h1 {
+    margin-bottom: 5%;
+    font-family: 'titulos', sans-serif;
+    font-size: 30px;
+}
+
+.images-day-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.images-day-container img {
+    width: 35%;
+    max-width: 25%;
+    max-height: 230px;
+    border-radius: 20px;
+    margin-bottom: -80px;
+}
+
+.line {
+    background-color: #D3BC90;
+    margin: 4% auto;
+    width: 90%;
+    max-width: 90%;
+    height: 30px;
+    max-height: 30px;
+    border-radius: 20px;
+}
+
+.menus {
+    text-align: center;
+    background-color: #D3BC90;
+    border-radius: 20px;
+    width: 80%;
+    max-width: 80%;
+    height: 350px;
+    max-height: 350px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.menus h1 {
+    margin-bottom: 20px;
+    font-family: 'titulos';
+    font-size: 30px;
+}
+
+.menus h2, h3{
+    font-family: 'textos', sans-serif;
+}
+
+.menu-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-width: 100%;
+    padding-top: 2%;
+}
+
+.menu {
+    text-align: center;
+    margin-right: 20px;
+}
+
+.menu img {
+    display: block;
+    margin: 0 auto;
+    width: 100%;
+    max-width: 200px;
+    border-radius: 20px;
+    margin-bottom: 10px;
+}
+
+.menu:last-child {
+    margin-right: 0;
+}
+
+.menu h2,
+.menu h3 {
+    margin-top: 10px;
+    font-size: 16px;
+}
+
+.menu .menu-image {
+    width: 100%;
+    max-width: 100%;
+    max-width: 220px;
+}
+
+.menu img[src*="trucha"] {
+    width: 100%;
+    max-width: 220px;
+}
+
+
+footer {
+    position: relative;
+}
+
+.footer-container {
+    width: 100%;
+    max-width: 100%;
+    height: 200px;
+    max-height: 200px;
+    background-color: #8CDED9;
+    border-radius: 20px;
+    text-align: center;
+    margin-top: 6%;
+    z-index: 2;
+}
+
+.footer-container h1 {
+    margin-bottom: 1%;
+    padding-top: 3%;
+    font-family: 'titulos', sans-serif;
+}
+
+.footer-container div {
+    display: inline-block;
+    margin: 0 10px;
+}
+
+.footer-container img {
+    width: 100%;
+    max-width: 100%;
+    height: 60px;
+    max-height: 60px;
+}
+
+.image-overlay {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    position: absolute;
+    bottom: 150px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1;
+}
+
+.image-overlay img {
+    width: 100px;
+    height: 100px;
+    margin: 0 100px;
+}
+
+#nosotros-section {
+    background-color: #D3BC90;
+    border-radius: 20px;
+    padding: 20px;
+    margin: 20px auto;
+    max-width: 60%;
+}
+
+#nosotros-section header h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-family: 'titulos', sans-serif;
+    font-size: 30px;
+}
+
+#nosotros-section article {
+    text-align: justify;
+}
+
+#nosotros-section article p {
+    margin-bottom: 20px;
+    font-family: 'textos', sans-serif;
+    font-size: 20px;
+}
+
+#inicio-section,
+#reserva-section,
+#nosotros-section {
+    display: none;
+}
+
+#reserva-section {
+    text-align: center;
+    margin-top: 50px;
+}
+
+#reserva-section h1 {
+    margin-bottom: 30px;
+    font-family: 'titulos',sans-serif;
+}
+
+form {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #e0bfe1;
+    border-radius: 20px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+form label {
+    display: block;
+    text-align: left;
+    margin-bottom: 5px;
+    font-family: 'textos',sans-serif;
+}
+
+form input[type="text"],
+form input[type="email"],
+form input[type="tel"],
+form input[type="date"],
+form input[type="time"],
+form input[type="number"],
+form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #27d1eb;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+form textarea {
+    height: 100px;
+    resize: vertical;
+}
+
+form input[type="submit"] {
+    width: 100%;
+    background-color: #4caf50;
+    color: #ffffff;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+form input[type="submit"]:hover {
+    background-color: #45a049;
+}
+
+#imagen3D-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@font-face {
+    font-family: "titulos";
+    src: url('../fuentes/Sons\ of\ Pain\ M.C..ttf') format('truetype');
+}
+
+@font-face {
+    font-family: "textos";
+    src: url('../fuentes/Type\ Machine.ttf') format('truetype');
+}
+
