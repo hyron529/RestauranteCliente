@@ -126,7 +126,13 @@ class ManagerView {
         }
     }
 
-    randomDishes(dish){
+    /*
+        Metodo empleado para visualizar los platos aleatoriamente en nuestra página
+        Primero se eliminan las filas y se añaden id y clase
+        Se pone un título y recorremos la lista de platos para mostrarlos de la forma deseada
+        Se inserta el div con los platos
+    */
+    randomDishes(dish) {
 
         if (this.initZone.children.length > 0) this.initZone.children[0].remove();
 
@@ -142,15 +148,106 @@ class ManagerView {
             `
         );
 
-        for(const dish of dishes){
+        for (const dish of dishes) {
             div.insertAdjacentHTML(
                 "beforeend",
                 `
-                    
+                <div class="card black rounded-3 mr-10" style="width: 18rem; margin-right: 30px; margin-bottom: 30px;">
+                <a data-name="${dish.name}" href="#single-dish">
+                    <img style="width: 18rem; height: 14rem;" src=${dish.image} class="card-img-top rounded-1" alt="">
+                   <div class="card-body text-center">
+                        <p class="card-text">${dish.name}</p>
+                   </div>
+                </a>
+            </div>
                 `
             );
         }
+        this.initZone.append(div);
     }
 
+    /*
+        Manejador de eventos que actúa cuando se hace click en un plato
+        Primero se recoge el lugar donde vamos a guardar los platos
+        Recogemos los enlaces dispoibles y se recorren todos
+    */
+    bindRandomDishes(handler) {
+        const random = document.getElementById("random-dishes");
+        const links = random.querySelectorAll("a");
+        for (const link of links) {
+            link.addEventListener("click", (event) => {
+                handler(event.currentTarget.dataset.name);
+            });
+        }
+    }
+
+    /*
+        Método que nos va a permitir listar todos nuestros platos
+        Hay que eliminar la zona central y se crea el div con su clase e id
+        Se recorren todos los platos y mostramos el div
+    */
+    listDishes(dishes, name) {
+        this.centralZone.replaceChildren();
+        const div = document.createElement("div");
+        div.classList.add("row");
+        div.id = "dish-list";
+
+        div.insertAdjacentHTML("beforeend", `<h1>${name}</h1>`);
+        for (const dish of dishes) {
+            div.insertAdjacentHTML(
+                "beforeend",
+                `
+                        <div class="card black rounded-3 mr-10" style="width: 18rem; margin-right: 30px; margin-bottom: 30px;">
+                            <a data-name="${dish.name}" href="#single-dish">
+                                <img style="width: 18rem; height: 14rem;" src=${dish.image} class="card-img-top rounded-1" alt="">
+                                <div class="card-body text-center">
+                                        <p class="card-text">${dish.name}</p>
+                                </div>
+                            </a>
+                        </div>
+                    `
+            );
+        }
+        this.centralZone.append(div);
+    }
+
+    /*
+        Método con el que mostramos una tarjeta en concreto, su contenido está 
+        formado por las características de cada plato cuando se pulsa
+        Primero se borra la zona central, creamos el div con su id y clase
+        Se mostrará la información en la web siempre y cuando haya un plato seleccionado
+        una vez hecho, mostramos el div en la página
+    */
+    showDish(dish) {
+        this.centralZone.replaceChildren();
+
+        const div = document.createElement("div");
+        div.classList.add("card", "black");
+        div.style.marginTop = "40px";
+
+        if (dish) {
+            div.id = "single-dish";
+            div.insertAdjacentHTML(
+                "beforeend",
+                `
+                        <div class="row g-0">
+                            <div class="col-md-4">
+                                <img src=${dish.image} style="height:auto;" class="img-fluid rounded-start" alt="">
+                            </div>
+                            <div class="col-md-8">
+                                <div class="card-body">
+                                    <h2 class="card-title text-white">${dish.name}</h2>
+                                    <p class="card-text text-secondary">${dish.description}</p>
+                                    <h5 class="text-white">Ingredientes</h5>
+                                    <p class="card-text text-secondary">${dish.ingredientsString}</p>
+                                </div>
+                            </div>
+                        </div>
+    
+                    `
+            );
+        }
+        this.centralZone.append(div);
+    }
 
 }  
