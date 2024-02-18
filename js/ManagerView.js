@@ -349,12 +349,12 @@ class ManagerView {
 
     /*
         Manejador de eventos para controlar cuando se hace click en un menú de la nav bar
-        Cogemos el elemento y los enlaces ara poder recorrerlos
+        Cogemos el elemento y los enlaces para poder recorrerlos
         y obtener el valor de cada uno de ellos
     */
     bindMenuListInNavBar(handler) {
-        const navMenu = document.getElementById("navMenu");
-        const links = navMenu.nextSibling.querySelectorAll("a");
+        const navBarMenu = document.getElementById("navBarMenu");
+        const links = navBarMenu.nextSibling.querySelectorAll("a");
 
         for (const link of links) {
             link.addEventListener("click", (event) => {
@@ -362,4 +362,86 @@ class ManagerView {
             });
         }
     }
+
+    /*
+        Método que nos permite mostrar los restaurantes en el nav bar
+        Creamos el item y su correspondiente clase
+        Hacemos que sea dropdown y definimos la lista donde guardamos los restaurantes en el desplegable
+        Le asignamos su clase y los recorremos para mostrarlos de la forma deseada
+    */
+    showRestaurantInNavBar(restaurants) {
+        const itemRest = document.createElement("li");
+        itemRest.classList.add("nav-item", "dropdown");
+
+        itemRest.insertAdjacentHTML(
+            "beforeend",
+            `<a class="nav-link dropdown-toggle text-white" href="#" id="navRes" role="button" data-bs-toggle="dropdown" aria-expanded="false">Restaurantes</a>`
+        );
+
+        const list = document.createElement("ul");
+        list.classList.add("dropdown-menu", "bg-dark");
+
+        for (const restaurant of restaurants) {
+            list.insertAdjacentHTML(
+                "beforeend",
+                `<li><a data-restaurant="${restaurant.restaurant.name}"
+            class="dropdown-item rounded text-secondary" 
+            style="width: 80%;"
+            href="#allergenlist">${restaurant.restaurant.name}</a></li>`
+            );
+        }
+        itemRest.append(list);
+        this.menu.append(itemRest);
+    }
+
+    /*
+        Manejador de eventos para controlar cuando se hace click en un restaurante de la nav bar
+        Cogemos el elemento y los enlaces para poder recorrerlos
+        y obtener el valor de cada uno de ellos
+    */
+    bindRestInNavBar(handler) {
+        const navBarRest = document.getElementById("navBarRest");
+        const links = navBarRest.nextSibling.querySelectorAll("a");
+
+        for (const link of links) {
+            link.addEventListener("click", (event) => {
+                handler(event.currentTarget.dataset.restaurant);
+            });
+        }
+    }
+
+    /*
+        Método empleado para mostrar la información de un restaurante seleccionado
+        Primero eliminamos la zona central y definimos el div con su clase
+        Se mostrará como tengamos establecido siempre y cuando el restaurante se obtiene correctamente del html
+        Una vez hecho, mostramos la  información del restaurante en la web
+    */
+    showRest(restaurant) {
+        this.centralZone.replaceChildren();
+        const div = document.createElement("div");
+        div.classList.add("card", "black");
+        div.style.marginTop = "40px";
+
+        if (restaurant) {
+            div.id = "restaurant";
+            div.insertAdjacentHTML(
+            "beforeend",
+            `
+            <div class="row g-0">
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <h2 class="card-title text-white">${restaurant.name}</h2>
+                        <p class="card-text text-secondary">${restaurant.description}</p>
+                        <h5 class="text-white">Localización</h5>
+                        <p class="card-text text-secondary">${restaurant.location}</p>
+                    </div>
+                </div>
+            </div>
+            `
+          );
+        }
+        this.centralZone.append(div);
+      }
 }  
+
+export default RestaurantManagerView;
