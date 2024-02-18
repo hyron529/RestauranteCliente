@@ -250,4 +250,70 @@ class ManagerView {
         this.centralZone.append(div);
     }
 
+    /*
+        Manejador de eventos que nos permite controlar los clicks a cada plato seleccionado
+        Primero capturamos el elemento y el enlace
+        Una vez hecho, los recorremos todos
+    */
+    bindShowDish(handler) {
+        const dish = document.getElementById("dishes");
+        const links = dish.querySelectorAll("a");
+        for (const link of links) {
+            link.addEventListener("click", (event) => {
+                handler(event.currentTarget.dataset.name);
+            });
+        }
+    }
+
+    /*
+        Método para mostrar en el nav bar los alérgenos de los platos
+        Creamos la lista con su clase, le ponemos el enlace para que sea dropdown
+        y definimos la lista del desplegable donde se alojarán los alérgenos, se le 
+        pone su clase y recorremos dichos alergenos para poder mostrarlos en el html de 
+        la forma deseada
+    */
+    showAllergensInNav(allergens) {
+        const aller = document.createElement("li");
+        aller.classList.add("nav-item", "dropdown");
+
+        aller.insertAdjacentHTML(
+            "beforeend",
+            `<a class="nav-link dropdown-toggle text-white" href="#" id="navAller" role="button" data-bs-toggle="dropdown" aria-expanded="false">Alergenos</a>`
+        );
+
+        const allerList = document.createElement("ul");
+        allerList.classList.add("dropdown-menu", "bg-dark");
+
+        for (const allergen of allergens) {
+            allerList.insertAdjacentHTML(
+                "beforeend",
+                `<li>
+                    <a data-allergen="${allergen.allergen.name}"
+                        class="dropdown-item rounded text-secondary" 
+                        style="width: 80%;"
+                        href="#allergenlist">${allergen.allergen.name}
+                    </a>
+                </li>`
+            );
+        }
+        aller.append(allerList);
+        this.menu.append(aller);
+    }
+
+    /*
+        Manejador de eventos que recoge un click a un alérgeno del nav bar
+        Recogemos el elemento y los enlaces de cada uno para después recorrerlos y
+        recibir el valor de cada uno de ellos
+    */
+    bindDishAllergenListInNav(handler) {
+        const navBarAller = document.getElementById("navAller");
+        const links = navBarAller.nextSibling.querySelectorAll("a");
+
+        for (const link of links) {
+            link.addEventListener("click", (event) => {
+                handler(event.currentTarget.dataset.allergen);
+            });
+        }
+    }
+
 }  
