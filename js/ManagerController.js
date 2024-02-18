@@ -62,7 +62,7 @@ class ManagerController {
         let plato8 = this[MODEL].createDish('Gachas manchegas');
         plato8.description = "Un plato de harina de almortas o harina de trigo con agua, aceite y sal.";
         plato8.ingredients = ["Harina de almortas", "Agua", "Aceite", "Sal"];
-        plato8.image = "./img/gachas_manchegas.jpg";
+        plato8.image = "./img/gachas.webp";
 
         let plato9 = this[MODEL].createDish('Bizcocho de calabaza');
         plato9.description = "Un delicioso bizcocho esponjoso elaborado con puré de calabaza, canela y nueces.";
