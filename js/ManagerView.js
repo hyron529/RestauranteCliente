@@ -441,7 +441,7 @@ class ManagerView {
           );
         }
         this.centralZone.append(div);
-      }
+    }
 }  
 
-export default RestaurantManagerView;
+export default ManagerView;

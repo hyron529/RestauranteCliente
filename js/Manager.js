@@ -1,9 +1,9 @@
 import {ObjectFalseException, ObjectTrueException, EmptyElementException, ErrorTypeExecption, IncorrectValueException } from "./Exception.js";
-import { Dish } from "./Dish.js";
-import { Allergen } from "./Allergen.js";
-import { Category } from "./Category.js";
-import { Menu } from "./Menu.js";
-import { Restaurant } from "./Restaurant.js";
+import { Dish } from "./objects/Dish.js";
+import { Allergen } from "./objects/Allergen.js";
+import { Category } from "./objects/Category.js";
+import { Menu } from "./objects/Menu.js";
+import { Restaurant } from "./objects/Restaurant.js";
 
 
 /*
@@ -780,7 +780,7 @@ const Manager = (function () {
         Devolvemos la instancia
     */
     return {
-        getInstance: function () {
+        getInstance () {
             if (!instance) {
                 instance = createInstance();
             }
@@ -789,4 +789,4 @@ const Manager = (function () {
     }
 })();
 
-export default { Manager };
+export default Manager;
