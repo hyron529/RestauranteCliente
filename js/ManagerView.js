@@ -272,7 +272,7 @@ class ManagerView {
         pone su clase y recorremos dichos alergenos para poder mostrarlos en el html de 
         la forma deseada
     */
-    showAllergensInNav(allergens) {
+    showAllergensInNavBar(allergens) {
         const aller = document.createElement("li");
         aller.classList.add("nav-item", "dropdown");
 
@@ -305,7 +305,7 @@ class ManagerView {
         Recogemos el elemento y los enlaces de cada uno para después recorrerlos y
         recibir el valor de cada uno de ellos
     */
-    bindDishAllergenListInNav(handler) {
+    bindAllergenListInNavBar(handler) {
         const navBarAller = document.getElementById("navAller");
         const links = navBarAller.nextSibling.querySelectorAll("a");
 
@@ -316,4 +316,50 @@ class ManagerView {
         }
     }
 
+    /*
+        Método para visualizar los menús disponibles en el nav bar de nuestra web
+        Creamos el item y su correspondiente clase
+        Hacemos que sea dropdown y definimos la lista donde guardamos los menús en el desplegable
+        Le asignamos su clase y los recorremos para mostrarlos de la forma deseada
+    */
+    showMenuInNavBar(menus) {
+        const elementMenu = document.createElement("li");
+        elementMenu.classList.add("nav-item", "dropdown");
+
+        elementMenu.insertAdjacentHTML(
+            "beforeend",
+            `<a class="nav-link dropdown-toggle text-white" href="#" id="navMenu" role="button" data-bs-toggle="dropdown" aria-expanded="false">Menus</a>`
+        );
+
+        const list = document.createElement("ul");
+        list.classList.add("dropdown-menu", "bg-dark");
+
+        for (const menu of menus) {
+            list.insertAdjacentHTML(
+                "beforeend",
+                `<li><a data-menu="${menu.menu.name}" 
+            class="dropdown-item rounded text-secondary" 
+            style="width: 85%;"
+            href="#allergenlist">${menu.menu.name}</a></li>`
+            );
+        }
+        menuItem.append(list);
+        this.menu.append(elementMenu);
+    }
+
+    /*
+        Manejador de eventos para controlar cuando se hace click en un menú de la nav bar
+        Cogemos el elemento y los enlaces ara poder recorrerlos
+        y obtener el valor de cada uno de ellos
+    */
+    bindMenuListInNavBar(handler) {
+        const navMenu = document.getElementById("navMenu");
+        const links = navMenu.nextSibling.querySelectorAll("a");
+
+        for (const link of links) {
+            link.addEventListener("click", (event) => {
+                handler(event.currentTarget.dataset.menu);
+            });
+        }
+    }
 }  
