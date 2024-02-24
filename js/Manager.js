@@ -752,12 +752,12 @@ const Manager = (function () {
             let random = [];
             let arrayDishes = Array.from(this.#mapDish.values());
 
-            while(arrayDishes.length != 3){
+            while(random.length != 3){
 
                 const randomNumber = Math.floor(Math.random()*arrayDishes.length);
 
                 let exist = random.find(
-                    (dish) => dish.name === arrayDishes[randomNumber].name
+                    (dish) => dish.dish.name === arrayDishes[randomNumber].name
                 );
                 if(!exist) random.push(arrayDishes[randomNumber]);
             }

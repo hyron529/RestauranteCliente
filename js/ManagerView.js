@@ -17,7 +17,7 @@ class ManagerView {
         en inicio o en el logo
     */
     bindInit(handler) {
-        document.getElementById("inicio").addEventListener("click", (event) => {
+        document.getElementById("init").addEventListener("click", (event) => {
             handler();
         });
 
@@ -34,8 +34,7 @@ class ManagerView {
     */
     showAllCategories(cat) {
 
-        if (this.centralZone.children.length > 0)
-            this.centralZone.children[0].remove();
+        if (this.central.children.length > 0) this.central.children[0].remove();
 
         const catCont = document.createElement("div");
 
@@ -44,17 +43,18 @@ class ManagerView {
         catCont.insertAdjacentHTML(
             "beforeend",
             `
-                <h3>Todas las categorías de nuestros productos<h3>
+                <h3 class="card_category_selector_text">Todas las categorías de nuestros productos<h3>
             `
         );
+        
 
-        for (const category of categories) {
-
+        for (const category of cat) {
+        
             catCont.insertAdjacentHTML(
 
                 "beforeend",
                 `
-                    <div class="card black rounded-3 mt-20" style="margin-right: 40px; margin-bottom: 40px width: 10%">
+                    <div class="card_categories_selector">
                         <a data-category="${category.category.name}" href="#dishes">
                             <div class="div-body text-center">
                                 <p class="div-content">${category.category.name}
@@ -65,47 +65,42 @@ class ManagerView {
                 `
             );
         }
-        this.centralZone.append(catCont);
+        this.central.append(catCont);
     }
 
     /*
         Método para desplegar las categoría en el nav de nuestra página
         Definimos la lista y el dropdown
-        Ponemos el dorpdown en el enlace que las contendrá y definimos el ul
+        Ponemos el dropdown en el enlace que las contendrá y definimos el ul
         Recorremos las categorías para poder mostrarlas en el desplegable en forma de lista
         y añadimos todos los elementos
     */
-    showNavBarCategories(cat) {
+    showCategoriesInNavBar(cat) {
+        const cate = document.createElement("li");
+        cate.classList.add("nav-item", "dropdown");
 
-        const item = document.createElement("li");
-
-        item.classList.add("navBar-item", "dropdown");
-
-        item.insertAdjacentHTML(
+        cate.insertAdjacentHTML(
             "beforeend",
-            `
-                <a id="navBarCat" class="navBar-click dropdown-toggle text-black" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Categorías</a>
-            `
+            `<a class="nav-link dropdown-toggle text-white" href="#" id="navBarCat" role="button" data-bs-toggle="dropdown" aria-expanded="false">Categorias</a>`
         );
 
-        const cats = document.createElement("ul");
-        cats.classList.add("dropdown-menu", "bg-dark");
+        const catelist = document.createElement("ul");
+        catelist.classList.add("dropdown-menu", "bg-dark");
 
-        for (const category of categories) {
-            cats.insertAdjacentHTML(
+        for (const category of cat) {
+            catelist.insertAdjacentHTML(
                 "beforeend",
-                `
-                <li>
-                    <a class="dropdown-item rounded text-secondary data-category="${category.category.name}
-                        href="#productlist" style="width: 80%;>
-                        ${category.category.name}
+                `<li>
+                    <a data-category="${category.category.name}"
+                        class="dropdown-item rounded text-secondary" 
+                        style="width: 80%;"
+                        href="#categorylist">${category.category.name}
                     </a>
-                </li>
-                `
+                </li>`
             );
         }
-        item.append(cats);
-        this.menu.append(item);
+        cate.append(catelist);
+        this.menu.append(cate);
     }
 
     /*
@@ -121,10 +116,26 @@ class ManagerView {
         for (const link of links) {
             link.addEventListener("click", (event) => {
                 handler(event.currentTarget.dataset.category);
-                console.log(event.currentTarget.dataset.category);
             });
         }
     }
+
+      /*
+        Manejador de eventos que recoge un click a un alérgeno del nav bar
+        Recogemos el elemento y los enlaces de cada uno para después recorrerlos y
+        recibir el valor de cada uno de ellos
+    */
+        bindCategoryListInNavBar(handler) {
+            const navCat = document.getElementById("navBarCat");
+            const links = navCat.nextSibling.querySelectorAll("a");
+        
+            for (const link of links) {
+                link.addEventListener("click", (event) => {
+                    handler(event.currentTarget.dataset.category);
+                });
+            }
+        }
+    
 
     /*
         Metodo empleado para visualizar los platos aleatoriamente en nuestra página
@@ -132,9 +143,9 @@ class ManagerView {
         Se pone un título y recorremos la lista de platos para mostrarlos de la forma deseada
         Se inserta el div con los platos
     */
-    randomDishes(dish) {
+    randomDishes(dishes) {
 
-        if (this.initZone.children.length > 0) this.initZone.children[0].remove();
+        if (this.inicio.children.length > 0) this.inicio.children[0].remove();
 
         const div = document.createElement("div");
 
@@ -152,18 +163,18 @@ class ManagerView {
             div.insertAdjacentHTML(
                 "beforeend",
                 `
-                <div class="card black rounded-3 mr-10" style="width: 18rem; margin-right: 30px; margin-bottom: 30px;">
-                <a data-name="${dish.name}" href="#single-dish">
-                    <img style="width: 18rem; height: 14rem;" src=${dish.image} class="card-img-top rounded-1" alt="">
-                   <div class="card-body text-center">
-                        <p class="card-text">${dish.name}</p>
+                <div class="card_random_dish">
+                <a data-name="${dish.dish.name}" href="#single-dish">
+                    <img src=${dish.dish.image} class="card_random_dish_img" alt="">
+                   <div class="card_random_center">
+                        <p class="card-text">${dish.dish.name}</p>
                    </div>
                 </a>
             </div>
                 `
             );
         }
-        this.initZone.append(div);
+        this.inicio.append(div);
     }
 
     /*
@@ -172,7 +183,7 @@ class ManagerView {
         Recogemos los enlaces dispoibles y se recorren todos
     */
     bindRandomDishes(handler) {
-        const random = document.getElementById("random-dishes");
+        const random = document.getElementById("random-dish");
         const links = random.querySelectorAll("a");
         for (const link of links) {
             link.addEventListener("click", (event) => {
@@ -187,28 +198,28 @@ class ManagerView {
         Se recorren todos los platos y mostramos el div
     */
     listDishes(dishes, name) {
-        this.centralZone.replaceChildren();
+        this.central.replaceChildren();
         const div = document.createElement("div");
         div.classList.add("row");
-        div.id = "dish-list";
+        div.id = "single-dish";
 
         div.insertAdjacentHTML("beforeend", `<h1>${name}</h1>`);
         for (const dish of dishes) {
             div.insertAdjacentHTML(
                 "beforeend",
                 `
-                        <div class="card black rounded-3 mr-10" style="width: 18rem; margin-right: 30px; margin-bottom: 30px;">
-                            <a data-name="${dish.name}" href="#single-dish">
-                                <img style="width: 18rem; height: 14rem;" src=${dish.image} class="card-img-top rounded-1" alt="">
-                                <div class="card-body text-center">
-                                        <p class="card-text">${dish.name}</p>
+                        <div class="card_list_dish">
+                            <a data-name="${dish.dish.name}" href="#single-dish">
+                                <img src=${dish.dish.image} class="card-img-top rounded-1" alt="">
+                                <div class="card_list_dish_center">
+                                        <p class="card-text">${dish.dish.name}</p>
                                 </div>
                             </a>
                         </div>
                     `
             );
         }
-        this.centralZone.append(div);
+        this.central.append(div);
     }
 
     /*
@@ -218,37 +229,42 @@ class ManagerView {
         Se mostrará la información en la web siempre y cuando haya un plato seleccionado
         una vez hecho, mostramos el div en la página
     */
-    showDish(dish) {
-        this.centralZone.replaceChildren();
-
-        const div = document.createElement("div");
-        div.classList.add("card", "black");
-        div.style.marginTop = "40px";
-
-        if (dish) {
-            div.id = "single-dish";
-            div.insertAdjacentHTML(
-                "beforeend",
-                `
-                        <div class="row g-0">
-                            <div class="col-md-4">
-                                <img src=${dish.image} style="height:auto;" class="img-fluid rounded-start" alt="">
-                            </div>
-                            <div class="col-md-8">
-                                <div class="card-body">
-                                    <h2 class="card-title text-white">${dish.name}</h2>
-                                    <p class="card-text text-secondary">${dish.description}</p>
-                                    <h5 class="text-white">Ingredientes</h5>
-                                    <p class="card-text text-secondary">${dish.ingredientsString}</p>
+        showDish(dish) {
+            this.central.replaceChildren();
+        
+            const container = document.createElement("div");
+            container.classList.add("card-container"); // Agregar clase para el contenedor principal
+        
+            const div = document.createElement("div");
+            div.classList.add("card", "black");
+            div.style.marginTop = "40px";
+        
+            if (dish) {
+                div.id = "single-show-dish";
+                div.insertAdjacentHTML(
+                    "beforeend",
+                    `
+                            <div class="row g-0">
+                                <div class="col-md-4">
+                                    <img src=${dish.image} alt="">
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="card-body">
+                                        <h2 class="card-title text-black">${dish.name}</h2>
+                                        <p class="card-text text-secondary">${dish.description}</p>
+                                        <h5 class="text-black">Ingredientes</h5>
+                                        <button class="btn btn-primary text-uppercase m-2 px-4">Abrir en otra ventana</button>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-    
-                    `
-            );
+                        `
+                );
+            }
+        
+            container.append(div); // Agregar la tarjeta al contenedor principal
+            this.central.append(container); // Agregar el contenedor principal al elemento central
         }
-        this.centralZone.append(div);
-    }
+        
 
     /*
         Manejador de eventos que nos permite controlar los clicks a cada plato seleccionado
@@ -256,7 +272,7 @@ class ManagerView {
         Una vez hecho, los recorremos todos
     */
     bindShowDish(handler) {
-        const dish = document.getElementById("dishes");
+        const dish = document.getElementById("single-dish");
         const links = dish.querySelectorAll("a");
         for (const link of links) {
             link.addEventListener("click", (event) => {
@@ -290,7 +306,6 @@ class ManagerView {
                 `<li>
                     <a data-allergen="${allergen.allergen.name}"
                         class="dropdown-item rounded text-secondary" 
-                        style="width: 80%;"
                         href="#allergenlist">${allergen.allergen.name}
                     </a>
                 </li>`
@@ -328,7 +343,7 @@ class ManagerView {
 
         elementMenu.insertAdjacentHTML(
             "beforeend",
-            `<a class="nav-link dropdown-toggle text-white" href="#" id="navMenu" role="button" data-bs-toggle="dropdown" aria-expanded="false">Menus</a>`
+            `<a class="nav-link dropdown-toggle text-white" href="#" id="navBarMenu" role="button" data-bs-toggle="dropdown" aria-expanded="false">Menus</a>`
         );
 
         const list = document.createElement("ul");
@@ -343,7 +358,7 @@ class ManagerView {
             href="#allergenlist">${menu.menu.name}</a></li>`
             );
         }
-        menuItem.append(list);
+        elementMenu.append(list);
         this.menu.append(elementMenu);
     }
 
@@ -354,6 +369,7 @@ class ManagerView {
     */
     bindMenuListInNavBar(handler) {
         const navBarMenu = document.getElementById("navBarMenu");
+        console.log(navBarMenu);
         const links = navBarMenu.nextSibling.querySelectorAll("a");
 
         for (const link of links) {
@@ -375,7 +391,7 @@ class ManagerView {
 
         itemRest.insertAdjacentHTML(
             "beforeend",
-            `<a class="nav-link dropdown-toggle text-white" href="#" id="navRes" role="button" data-bs-toggle="dropdown" aria-expanded="false">Restaurantes</a>`
+            `<a class="nav-link dropdown-toggle text-white" href="#" id="navBarRest" role="button" data-bs-toggle="dropdown" aria-expanded="false">Restaurantes</a>`
         );
 
         const list = document.createElement("ul");
@@ -417,7 +433,7 @@ class ManagerView {
         Una vez hecho, mostramos la  información del restaurante en la web
     */
     showRest(restaurant) {
-        this.centralZone.replaceChildren();
+        this.central.replaceChildren();
         const div = document.createElement("div");
         div.classList.add("card", "black");
         div.style.marginTop = "40px";
@@ -440,7 +456,7 @@ class ManagerView {
             `
           );
         }
-        this.centralZone.append(div);
+        this.central.append(div);
     }
 }  
 

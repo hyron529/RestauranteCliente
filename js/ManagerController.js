@@ -62,7 +62,7 @@ class ManagerController {
         let plato8 = this[MODEL].createDish('Gachas manchegas');
         plato8.description = "Un plato de harina de almortas o harina de trigo con agua, aceite y sal.";
         plato8.ingredients = ["Harina de almortas", "Agua", "Aceite", "Sal"];
-        plato8.image = "./img/gachas_manchegas.jpg";
+        plato8.image = "./img/gachas.webp";
 
         let plato9 = this[MODEL].createDish('Bizcocho de calabaza');
         plato9.description = "Un delicioso bizcocho esponjoso elaborado con puré de calabaza, canela y nueces.";
@@ -139,7 +139,7 @@ class ManagerController {
         this[MODEL].assignDishToMenu(menu3, plato4, plato5, plato8, plato10);
     }
 
-    
+
     /*
         Creción de métodos para cargar e iniciar los métodos definidos
         además de los manejadores de eventos necesarios para el funcionamiento
@@ -154,10 +154,10 @@ class ManagerController {
     };
 
     onInit = () => {
-        this[VIEW].showCategories(this[MODEL].categories);
-        this[VIEW].bindDishCategoryList(this.handleDishCategoryList);
-        this[VIEW].showRandomDishes(this[MODEL].getRandomDishes());
-        this[VIEW].bindRandomDishes(this.handleDishRandomList);
+        this[VIEW].showAllCategories(this[MODEL].categories);
+        this[VIEW].bindCategoryList(this.handleDishInCategory);
+        this[VIEW].randomDishes(this[MODEL].showThreeRandomDishes());
+        this[VIEW].bindRandomDishes(this.handleRandomDishes);
     }
 
     handleInit = () => {
@@ -166,12 +166,12 @@ class ManagerController {
 
     handleDisplayDish = (name) => {
         const dish = this[MODEL].createDish(name);
-        this[VIEW].displayDish(dish);
+        this[VIEW].showDish(dish);
     }
 
     handleDisplayRestaurant = (name) => {
         const restaurant = this[MODEL].createRestaurant(name);
-        this[VIEW].displayRestaurant(restaurant);
+        this[VIEW].showRest(restaurant);
     }
 
     handleRandomDishes = (name) => {
@@ -205,7 +205,33 @@ class ManagerController {
         );
         this[VIEW].bindShowDish(this.handleDisplayDish);
     }
+
     
+
+    /*
+        Funciones para mostrar en el navegador las categorías, alérgenos, menús
+        y restaurantes
+    */
+    onAddCategory = () => {
+        this[VIEW].showCategoriesInNavBar(this[MODEL].categories);
+        this[VIEW].bindCategoryListInNavBar(this.handleDishInCategory);
+    }
+
+    onAddAllergen = () => {
+        this[VIEW].showAllergensInNavBar(this[MODEL].allergens);
+        this[VIEW].bindAllergenListInNavBar(this.handleDishInAllergen);
+    }
+
+    onAddMenu = () => {
+        this[VIEW].showMenuInNavBar(this[MODEL].menus);
+        this[VIEW].bindMenuListInNavBar(this.handleDishInMenu);
+    }
+
+    onAddRestaurant = () => {
+        this[VIEW].showRestaurantInNavBar(this[MODEL].restaurants);
+        this[VIEW].bindRestInNavBar(this.handleDisplayRestaurant);
+    }
+
 }
 
 export default ManagerController;
