@@ -70,17 +70,29 @@ document.addEventListener('DOMContentLoaded', manejarMovimientos);
 
 
 //Spinner
-const botonReserva = document.querySelector('#reserva-section input[type="submit"]');
-const spinner = document.querySelector('#spinner');
+$(document).ready(function() {
+    function mostrarSpinner() {
+        $('#spinner-container').show();
+        setTimeout(function() {
+            $('#spinner-container').hide();
+        
+        }, 3000); 
+    }
 
-botonReserva.addEventListener('click', () => {
-  spinner.style.display = 'inline-block';
 
-  
-  setTimeout(() => {
-    spinner.style.display = 'none';
-  }, 2000);
+    $('#nosotros-link').click(function(e) {
+        e.preventDefault();
+        mostrarSpinner();
+    });
+
+    $('#reservas-link').click(function(e) {
+        e.preventDefault();
+        mostrarSpinner();
+    });
 });
+
+
+
 
 
 
