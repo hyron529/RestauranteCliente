@@ -253,6 +253,7 @@ class ManagerView {
                                         <h2 class="card-title text-black">${dish.name}</h2>
                                         <p class="card-text text-secondary">${dish.description}</p>
                                         <h5 class="text-black">Ingredientes</h5>
+                                        <p class="card-text text-ingredients">${dish.ingredients}</p>
                                         <button class="btn btn-primary text-uppercase m-2 px-4">Abrir en otra ventana</button>
                                     </div>
                                 </div>

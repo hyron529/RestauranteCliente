@@ -12,12 +12,12 @@ body {
     border-radius: 20px;
 }
 
-.header h1{
+.header h1 {
     font-family: 'titulos', sans-serif;
     font-size: 50px;
 }
 
-.header h2{
+.header h2 {
     font-family: 'textos', sans-serif;
     font-size: 20px;
 }
@@ -85,7 +85,7 @@ nav {
     z-index: 2;
 }
 
-.list{
+.list {
     font-family: 'titulos', sans-serif;
     font-size: 20px;
 }
@@ -188,7 +188,8 @@ nav {
     font-size: 30px;
 }
 
-.menus h2, h3{
+.menus h2,
+h3 {
     font-family: 'textos', sans-serif;
 }
 
@@ -320,7 +321,7 @@ footer {
 
 #reserva-section h1 {
     margin-bottom: 30px;
-    font-family: 'titulos',sans-serif;
+    font-family: 'titulos', sans-serif;
 }
 
 form {
@@ -336,7 +337,7 @@ form label {
     display: block;
     text-align: left;
     margin-bottom: 5px;
-    font-family: 'textos',sans-serif;
+    font-family: 'textos', sans-serif;
 }
 
 form input[type="text"],
@@ -390,33 +391,33 @@ form input[type="submit"]:hover {
     src: url('../fuentes/Type\ Machine.ttf') format('truetype');
 }
 
-.card_categories_selector{
+.card_categories_selector {
     background-color: #D3BC90;
-    margin-right: 40px; 
+    margin-right: 40px;
     margin-bottom: 40px;
     width: 25%;
     border-radius: 20px;
     border: solid 3px #000;
 }
 
-.card_categories_selector:hover{
+.card_categories_selector:hover {
     background-color: #8CDED9;
 }
 
-.card_category_selector_text{
+.card_category_selector_text {
     color: #000;
     font-family: "titulos";
     text-align: center;
 }
 
-.card_categories_selector a{
+.card_categories_selector a {
     text-decoration: none;
     font-family: "titulos";
     font-size: 30px;
     color: #000;
 }
 
-#dishes{
+#dishes {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
@@ -429,10 +430,10 @@ form input[type="submit"]:hover {
     border: 3px solid #000;
     border-radius: 20px;
     margin: 30px;
-    display: inline-block; 
+    display: inline-block;
 }
 
-.card_random_dish a{
+.card_random_dish a {
     text-decoration: none;
     font-family: "textos";
     color: #000;
@@ -457,15 +458,15 @@ form input[type="submit"]:hover {
 }
 
 #random-dish h1 {
-    color: #000; 
-    font-family:  "titulos";
+    color: #000;
+    font-family: "titulos";
     text-align: center;
 }
 
 #random-dish {
     display: flex;
     justify-content: center;
-    flex-wrap: wrap; 
+    flex-wrap: wrap;
 }
 
 
@@ -476,12 +477,13 @@ form input[type="submit"]:hover {
     align-items: center;
     height: 300px;
 }
+
 .card {
     background-color: #D3BC90;
     border: 3px solid #000;
     padding: 20px;
     max-width: 40%;
-    
+
 }
 
 .card img {
@@ -490,7 +492,7 @@ form input[type="submit"]:hover {
     max-width: 100%;
     max-height: 200px;
     border-radius: 20px;
-    margin-bottom: 20px; 
+    margin-bottom: 20px;
 }
 
 .card-title {
@@ -513,41 +515,40 @@ form input[type="submit"]:hover {
     color: #000;
 }
 
-/*Allergens in nav*/
-/* Estilos para los elementos de la lista de alérgenos */
 .dropdown-menu li {
-    margin-bottom: 5px; 
+    margin-bottom: 5px;
 }
 
 .dropdown-menu a {
     padding: 5px 15px;
-    color: #000 !important; /* Cambia el color del texto */
+    color: #000 !important;
     font-family: "textos";
-    text-decoration: none; /* Sin subrayado */
-    display: block; /* Mostrar como bloque para ocupar el ancho completo */
+    text-decoration: none;
+    display: block;
 }
 
 .dropdown-menu a:hover {
-    color: #27d1eb !important; /* Color del texto al pasar el mouse */
+    color: #27d1eb !important;
 }
 
 .dropdown-menu {
-    border: none; /* Sin borde */
-    width: 200px; /* Ancho del menú desplegable */
+    border: none;
+    width: 200px;
 }
+
 .dropdown-menu.bg-dark {
     background-color: #D3BC90 !important;
 }
 
 .nav-item.dropdown .nav-link {
-    color:gray !important;  
+    color: gray !important;
     font-family: "titulos";
     font-size: large;
 }
 
 
 #single-dish .card_list_dish img {
-    width: 14%; 
+    width: 14%;
     height: auto;
     border-radius: 20px !important;
 }
@@ -559,7 +560,7 @@ form input[type="submit"]:hover {
 }
 
 #single-dish .card_list_dish {
-    margin: 0 auto 10px ;
+    margin: 0 auto 10px;
     width: 200px;
     text-align: center;
 }
@@ -567,7 +568,7 @@ form input[type="submit"]:hover {
 
 #single-dish .card_list_dish img {
     width: 200px;
-    height: 150px; 
+    height: 150px;
     border-radius: 20px !important;
 }
 
@@ -575,7 +576,7 @@ form input[type="submit"]:hover {
     font-size: 20px;
     color: #000;
     font-family: "titulos";
-    margin-top: 10px; 
+    margin-top: 10px;
 }
 
 #single-dish h1 {
@@ -584,20 +585,98 @@ form input[type="submit"]:hover {
     font-family: "titulos";
 }
 
-#restaurant {
-    display: flex;
-    justify-content: center; /* Centrado horizontal */
-    align-items: center; /* Centrado vertical */
+#breadcrumbs {
+    font-family: "titulos";
+    color: #000;
 }
 
 
+@keyframes galopar {
+    0% {
+        transform: translateX(0);
+    }
+
+    25% {
+        transform: translateX(5px) rotate(-5deg);
+    }
+
+    50% {
+        transform: translateX(0);
+    }
+
+    75% {
+        transform: translateX(-5px) rotate(5deg);
+    }
+
+    100% {
+        transform: translateX(0);
+    }
+}
+
+.header__logo img {
+    animation: galopar 2s ease-in-out infinite;
+}
+
+@keyframes balancear {
+    0% { transform: rotate(-5deg); }
+    50% { transform: rotate(5deg); }
+    100% { transform: rotate(-5deg); }
+  }
+  
+  .header__cart img {
+    animation: balancear 2s ease-in-out infinite;
+  }
 
 
+.spinner{
+    display: none;
+}
+
+.spinner {
+    border: 4px solid rgba(0, 0, 0, 0.1);
+    border-left-color: #007bff;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    animation: spin 1s linear infinite;
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
 
 
+  .progress-bar-container {
+    width: 50%;
+    height: 20px;
+    background-color: #f0f0f0;
+    border-radius: 20px;
+    margin: 20px auto;
+    position: relative;
+}
 
+.progress-bar {
+    height: 100%;
+    background-color: #4CAF50;
+    border-radius: 20px; 
+    transition: width 0.5s ease;
+}
 
+.modal-body{
+    background-color: #D3BC90;
+}
 
+.modal-footer{
+    background-color: #8CDED9;
+}
 
+.modal-header{
+    background-color: #8CDED9;
+}
+
+.modal-title{
+    font-family: "titulos";
+}
 
 

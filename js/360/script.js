@@ -1,0 +1,95 @@
+const inicioSection = document.getElementById("inicio-section");
+const reservaSection = document.getElementById("reserva-section");
+const nosotrosSection = document.getElementById("nosotros-section");
+
+function mostrarReserva() {
+    inicioSection.style.display = "none";
+    reservaSection.style.display = "block";
+    nosotrosSection.style.display = "none";
+}
+
+function mostrarInicio() {
+    inicioSection.style.display = "block";
+    reservaSection.style.display = "none";
+    nosotrosSection.style.display = "none";
+}
+
+function mostrarNosotros() {
+    inicioSection.style.display = "none";
+    reservaSection.style.display = "none";
+    nosotrosSection.style.display = "block";
+}
+
+window.onload = function() {
+    mostrarInicio();
+};
+
+//MIGAS DE PAN
+function manejarMovimientos() {
+    const elementosClickeables = document.querySelectorAll('a[href^="#"]');
+    elementosClickeables.forEach(elemento => {
+        elemento.addEventListener('click', function(evento) {
+            evento.preventDefault();
+
+            const destino = this.getAttribute('href');
+
+            actualizarMigasDePan(destino);
+
+            document.querySelector(destino).scrollIntoView({
+                behavior: 'smooth'
+            });
+        });
+    });
+}
+
+function actualizarMigasDePan(destino) {
+    const migasDePan = document.getElementById('breadcrumbs');
+
+    migasDePan.innerHTML = '';
+
+    const inicio = document.createElement('a');
+    inicio.textContent = 'Inicio';
+    inicio.href = '#inicio-section';
+    migasDePan.appendChild(inicio);
+
+    const separador = document.createElement('span');
+    separador.textContent = ' > ';
+    migasDePan.appendChild(separador);
+
+    const destinoActual = document.createElement('span');
+    destinoActual.textContent = obtenerNombreSeccion(destino);
+    migasDePan.appendChild(destinoActual);
+}
+
+function obtenerNombreSeccion(destino) {
+    return destino.slice(1);
+}
+
+document.addEventListener('DOMContentLoaded', manejarMovimientos);
+
+
+
+//Spinner
+const botonReserva = document.querySelector('#reserva-section input[type="submit"]');
+const spinner = document.querySelector('#spinner');
+
+botonReserva.addEventListener('click', () => {
+  spinner.style.display = 'inline-block';
+
+  
+  setTimeout(() => {
+    spinner.style.display = 'none';
+  }, 2000);
+});
+
+
+
+
+
+
+
+
+
+
+
+
