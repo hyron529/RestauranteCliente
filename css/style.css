@@ -14,32 +14,53 @@ body {
 
 .header h1 {
     font-family: 'titulos', sans-serif;
-    font-size: 50px;
+    font-size: 3em;
 }
 
 .header h2 {
     font-family: 'textos', sans-serif;
-    font-size: 20px;
+    font-size: 1.2em;
 }
 
 .header__logo img {
     width: 100%;
     height: auto;
-    max-width: 200px;
+    max-width: 12em;
     cursor: pointer;
 }
 
 .header__user img,
-.header__language img,
+.header__language__esp img,
+.header__language__eng img,
 .header__cart img {
     width: 100%;
     height: auto;
-    max-width: 45px;
+    max-width: 3em;
     cursor: pointer;
 }
 
+.flags {
+    width: 20%; 
+    height: 4em;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    border: none;
+    padding: 0; 
+    cursor: pointer;
+}
+
+#es {
+    background-image: url('./img/idioma.png');
+}
+
+#en {
+    background-image: url('./img/uk.webp');
+}
+
+
 .header__subtitle {
-    text-indent: 80px;
+    text-indent: 5em;
 }
 
 .header__content {
@@ -50,10 +71,10 @@ body {
     background-color: #8CDED9;
     display: flex;
     justify-content: center;
-    padding: 10px;
+    padding: 0.7em;
     border: solid black 3px;
     border-radius: 20px;
-    max-width: 900px;
+    max-width: 90em;
     margin: 0 auto;
 }
 
@@ -65,12 +86,12 @@ body {
 
 .menu li {
     display: inline-block;
-    margin: 0 20px;
+    margin: 0 1.4em;
 }
 
 .menu li a {
     text-decoration: none;
-    padding: 10px;
+    padding: 0.7em;
     color: #000;
 }
 
@@ -87,77 +108,7 @@ nav {
 
 .list {
     font-family: 'titulos', sans-serif;
-    font-size: 20px;
-}
-
-.image-section {
-    margin-top: -45px;
-    text-align: center;
-    position: relative;
-    z-index: 1;
-}
-
-.molinos-image {
-    width: 75%;
-    max-width: 100%;
-    height: auto;
-    max-height: 700px;
-    border-radius: 20px;
-}
-
-.flecha-left,
-.flecha-right {
-    position: absolute;
-    top: 50%;
-}
-
-.flecha-left {
-    left: 15%;
-    width: 6%;
-    max-width: 6%;
-    transform: translateY(-50%) rotate(180deg);
-    cursor: pointer;
-}
-
-.flecha-right {
-    right: 15%;
-    width: 6%;
-    max-width: 6%;
-    transform: translateY(-50%);
-    cursor: pointer;
-}
-
-.day-menu {
-    text-align: center;
-    margin: 4% auto 0;
-    width: 50%;
-    max-width: 50%;
-    border-radius: 20px;
-    padding-left: 60px;
-    padding-right: 60px;
-    padding-top: 30px;
-    background-color: #D3BC90;
-    position: relative;
-    overflow: visible;
-}
-
-.day-menu h1 {
-    margin-bottom: 5%;
-    font-family: 'titulos', sans-serif;
-    font-size: 30px;
-}
-
-.images-day-container {
-    display: flex;
-    justify-content: space-between;
-}
-
-.images-day-container img {
-    width: 35%;
-    max-width: 25%;
-    max-height: 230px;
-    border-radius: 20px;
-    margin-bottom: -80px;
+    font-size: 1.3em;
 }
 
 .line {
@@ -170,72 +121,6 @@ nav {
     border-radius: 20px;
 }
 
-.menus {
-    text-align: center;
-    background-color: #D3BC90;
-    border-radius: 20px;
-    width: 80%;
-    max-width: 80%;
-    height: 350px;
-    max-height: 350px;
-    margin: 0 auto;
-    padding: 20px;
-}
-
-.menus h1 {
-    margin-bottom: 20px;
-    font-family: 'titulos';
-    font-size: 30px;
-}
-
-.menus h2,
-h3 {
-    font-family: 'textos', sans-serif;
-}
-
-.menu-container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    max-width: 100%;
-    padding-top: 2%;
-}
-
-.menu {
-    text-align: center;
-    margin-right: 20px;
-}
-
-.menu img {
-    display: block;
-    margin: 0 auto;
-    width: 100%;
-    max-width: 200px;
-    border-radius: 20px;
-    margin-bottom: 10px;
-}
-
-.menu:last-child {
-    margin-right: 0;
-}
-
-.menu h2,
-.menu h3 {
-    margin-top: 10px;
-    font-size: 16px;
-}
-
-.menu .menu-image {
-    width: 100%;
-    max-width: 100%;
-    max-width: 220px;
-}
-
-.menu img[src*="trucha"] {
-    width: 100%;
-    max-width: 220px;
-}
-
 
 footer {
     position: relative;
@@ -244,8 +129,8 @@ footer {
 .footer-container {
     width: 100%;
     max-width: 100%;
-    height: 205px;
-    max-height: 205px;
+    height: 13em;
+    max-height: 13em;
     background-color: #8CDED9;
     border-radius: 20px;
     text-align: center;
@@ -261,14 +146,14 @@ footer {
 
 .footer-container div {
     display: inline-block;
-    margin: 0 10px;
+    margin: 0 1em;
 }
 
 .footer-container img {
     width: 100%;
     max-width: 100%;
-    height: 60px;
-    max-height: 60px;
+    height: 4em;
+    max-height: 4em;
 }
 
 .image-overlay {
@@ -276,7 +161,7 @@ footer {
     flex-wrap: wrap;
     justify-content: center;
     position: absolute;
-    bottom: 150px;
+    bottom: 10em;
     left: 50%;
     transform: translateX(-50%);
     z-index: 1;
@@ -298,9 +183,9 @@ footer {
 
 #nosotros-section header h1 {
     text-align: center;
-    margin-bottom: 20px;
+    margin-bottom: 0.5em;
     font-family: 'titulos', sans-serif;
-    font-size: 30px;
+    font-size: 2em;
 }
 
 #nosotros-section article {
@@ -308,26 +193,26 @@ footer {
 }
 
 #nosotros-section article p {
-    margin-bottom: 20px;
+    margin-bottom: 0.7em;
     font-family: 'textos', sans-serif;
-    font-size: 20px;
+    font-size: 1.3em;
 }
 
 
 #reserva-section {
     text-align: center;
-    margin-top: 50px;
+    margin-top: 4em;
 }
 
 #reserva-section h1 {
-    margin-bottom: 30px;
+    margin-bottom: 2em;
     font-family: 'titulos', sans-serif;
 }
 
 form {
-    max-width: 400px;
+    max-width: 30em;
     margin: 0 auto;
-    padding: 20px;
+    padding: 2em;
     background-color: #e0bfe1;
     border-radius: 20px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
@@ -336,7 +221,7 @@ form {
 form label {
     display: block;
     text-align: left;
-    margin-bottom: 5px;
+    margin-bottom: 0.5em;
     font-family: 'textos', sans-serif;
 }
 
@@ -348,15 +233,15 @@ form input[type="time"],
 form input[type="number"],
 form textarea {
     width: 100%;
-    padding: 10px;
-    margin-bottom: 15px;
+    padding: 0.5em;
+    margin-bottom: 1em;
     border: 1px solid #27d1eb;
     border-radius: 5px;
     box-sizing: border-box;
 }
 
 form textarea {
-    height: 100px;
+    height: 6em;
     resize: vertical;
 }
 
@@ -364,7 +249,7 @@ form input[type="submit"] {
     width: 100%;
     background-color: #4caf50;
     color: #ffffff;
-    padding: 10px;
+    padding: 2em;
     border: none;
     border-radius: 5px;
     cursor: pointer;
@@ -393,8 +278,8 @@ form input[type="submit"]:hover {
 
 .card_categories_selector {
     background-color: #D3BC90;
-    margin-right: 40px;
-    margin-bottom: 40px;
+    margin-right: 2em;
+    margin-bottom: 1em;
     width: 25%;
     border-radius: 20px;
     border: solid 3px #000;
@@ -429,7 +314,7 @@ form input[type="submit"]:hover {
     width: 17%;
     border: 3px solid #000;
     border-radius: 20px;
-    margin: 30px;
+    margin: 3em;
     display: inline-block;
 }
 
@@ -446,14 +331,14 @@ form input[type="submit"]:hover {
 
 .card_random_dish_img {
     width: 100%;
-    height: 250px;
+    height: 9em;
     border-radius: 20px;
     object-fit: cover;
     padding: 10px;
 }
 
 .card_random_center {
-    padding: 10px;
+    padding: 0.6em;
     text-align: center;
 }
 
@@ -475,13 +360,13 @@ form input[type="submit"]:hover {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 300px;
+    height: 15em;
 }
 
 .card {
     background-color: #D3BC90;
     border: 3px solid #000;
-    padding: 20px;
+    padding: 1em;
     max-width: 40%;
 
 }
@@ -498,14 +383,14 @@ form input[type="submit"]:hover {
 .card-title {
     font-size: 24px;
     font-family: "titulos";
-    margin-bottom: 10px;
+    margin-bottom: 1em;
 }
 
 .card-text {
     color: #000;
     font-family: "textos";
     font-size: 16px;
-    margin-bottom: 20px;
+    margin-bottom: 1em;
 }
 
 .card-body h5 {
@@ -533,7 +418,7 @@ form input[type="submit"]:hover {
 
 .dropdown-menu {
     border: none;
-    width: 200px;
+    width: 13em;
 }
 
 .dropdown-menu.bg-dark {
@@ -560,15 +445,15 @@ form input[type="submit"]:hover {
 }
 
 #single-dish .card_list_dish {
-    margin: 0 auto 10px;
-    width: 200px;
+    margin: 0 auto 8px;
+    width: 11em;
     text-align: center;
 }
 
 
 #single-dish .card_list_dish img {
-    width: 200px;
-    height: 150px;
+    width: 9.5em;
+    height: 8em;
     border-radius: 20px !important;
 }
 
@@ -576,7 +461,7 @@ form input[type="submit"]:hover {
     font-size: 20px;
     color: #000;
     font-family: "titulos";
-    margin-top: 10px;
+    margin-top: 0.4em;
 }
 
 #single-dish h1 {
@@ -588,6 +473,27 @@ form input[type="submit"]:hover {
 #breadcrumbs {
     font-family: "titulos";
     color: #000;
+}
+
+.ubicacion{
+    font-family: "titulos";
+    text-align: center;
+}
+
+.ubicacion a{
+    color: #000;
+    text-decoration: none;
+}
+
+.ubicacion a:hover{
+    color: #27d1eb;
+}
+
+.galeria-imagen{
+    width: 100%;
+    max-width: 100%;
+    height: 50em;
+    max-height: 50em;
 }
 
 
@@ -665,10 +571,10 @@ form input[type="submit"]:hover {
 
 .progress-bar-container {
     width: 50%;
-    height: 20px;
+    height: 1em;
     background-color: #f0f0f0;
     border-radius: 20px;
-    margin: 20px auto;
+    margin: 1em auto;
     position: relative;
 }
 
@@ -693,4 +599,84 @@ form input[type="submit"]:hover {
 
 .modal-title {
     font-family: "titulos";
+}
+
+
+@media only screen and (max-width: 576px) {
+    .header__subtitle {
+        display: none;
+    }
+
+    .flags {
+        display: none;
+    }
+
+    .header__cart {
+        display: none;
+    }
+
+    .header__user {
+        display: none;
+    }
+
+    .menu-wrapper {
+        display: none;
+    }
+
+    .image-overlay{
+        display: none;
+    }
+
+    .dishes-container {
+        display: flex;
+        flex-wrap: wrap; 
+        justify-content: center; 
+        align-items: flex-start; 
+    }
+
+    .card_random_dish {
+        width: 40%; 
+        margin: 1em;
+    }
+
+    .menu-toggle {
+        position: absolute;
+        top: 18%; 
+        right: 20px;
+        transform: translateY(-50%);
+        z-index: 1000;
+        font-family:  "titulos";
+        background-color: #D3BC90;
+    }
+
+}
+
+/* Estilos para tablets (hasta 992px) */
+@media only screen and (max-width: 992px) {
+    .header__subtitle {
+        display: none;
+    }
+    
+    .header__content {
+        margin-left: 5%;
+    }
+    
+    .card_random_dish {
+        width: 30%;
+    }
+    
+    .menu-wrapper {
+        display: block;
+    }
+    
+    .image-overlay{
+        display: none;
+    }
+}
+
+
+@media only screen and (min-width: 577px) {
+    .menu-toggle {
+        display: none;
+    }
 }

@@ -93,6 +93,33 @@ $(document).ready(function() {
 
 
 
+//galeria
+function mostrarGaleria() {
+    document.getElementById('gallery-container').style.display = 'block';
+}
+
+
+
+
+// menu para móviles
+function toggleMenu() {
+    var menuWrapper = document.getElementById('menu-wrapper');
+    if (menuWrapper.style.display === 'none' || menuWrapper.style.display === '') {
+        menuWrapper.style.display = 'block';
+    } else {
+        menuWrapper.style.display = 'none';
+    }
+}
+
+
+
+
+
+
+
+
+
+
 
 
 

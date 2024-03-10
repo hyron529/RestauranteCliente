@@ -1,3 +1,7 @@
+<!-- Mejoras para nuestra página web:
+    1. Que el usuario pueda valorar (por ejemplo con estrellas) tanto al restaurante como a cada plato y menú.
+    2. Que el usuario pueda loguearse para acceder a distintas promociones. 
+-->
 <!DOCTYPE html>
 <html lang="en">
 
@@ -19,17 +23,26 @@
         <div class="spinner"></div>
     </div>
     <main>
+        
         <header class="header">
             <div class="header__logo">
                 <img onclick="mostrarInicio()" src="./img/logo.png" alt="logo" class="header__logo-image" id="logo">
             </div>
             <div class="header__content">
-                <h1 class="header__title">RESTAURANTE GASTROMANCHA</h1>
-                <h2 class="header__subtitle">Adaptamos la gastronomía de otros países con productos típicos de nuestra
+                <h1 class="header__title" data-translate="title">RESTAURANTE GASTROMANCHA</h1>
+                <h2 class="header__subtitle" data-translate="subtitle">Adaptamos la gastronomía de otros países con
+                    productos típicos de nuestra
                     tierra</h2>
             </div>
-            <div class="header__language">
-                <img src="./img/idioma.png" alt="idioma" class="header__language-image">
+            <div class="flags" id="flags">
+                <div class="header__language__esp" data-language="es">
+                    <button class="translate" id="es" onclick="changeLanguage('es')"><img src="./img/idioma.png"
+                            alt="es"></button>
+                </div>
+                <div class="header__language__eng">
+                    <button class="translate" id="en" onclick="changeLanguage('en')"><img src="./img/uk.webp"
+                            alt="uk"></button>
+                </div>
             </div>
             <div class="header__cart">
                 <img src="./img/carrito.png" alt="carrito" class="header__cart-image">
@@ -37,185 +50,248 @@
             <div class="header__user">
                 <img src="./img/usuario.png" alt="usuario" class="header__user-image">
             </div>
+            <button class="menu-toggle" onclick="toggleMenu()">Menú</button>
         </header>
-          
+
         <nav class="fixed-nav">
-            <div class="menu-wrapper">
+            <div class="menu-wrapper" id="menu-wrapper">
                 <ul class="menu">
-                    <li class="list"><a onclick="mostrarInicio()" id="init" href="#inicio-section">INICIO</a></li>
-                    <li class="list"><a id="nosotros-link" onclick="mostrarNosotros()" href="#nosotros-section">NOSOTROS</a></li>
-                    <li class="list"><a href="#">UBICACIÓN</a></li>
-                    <li class="list"><a href="#">MENÚ</a></li>
-                    <li class="list"><a href="#">CONTACTO</a></li>
-                    <li class="list"><a id="reservas-link" onclick="mostrarReserva()" href="#reserva-section">RESERVAS</a></li>                </ul>
+                    <li class="list"><a onclick="mostrarInicio()" data-translate="inicio" id="init"
+                            href="#inicio-section">INICIO</a></li>
+                    <li class="list"><a id="nosotros-link" onclick="mostrarNosotros()" data-translate="nosotros"
+                            href="#nosotros-section">NOSOTROS</a></li>
+                    <li class="list"><a id="reservas-link" onclick="mostrarReserva()" data-translate="reservas"
+                            href="#reserva-section">RESERVAS</a></li>
+                    <li class="list"><a href="#" onclick="mostrarGaleria()" data-translate="galeria">GALERÍA</a></li>
+                </ul>
             </div>
         </nav>
         <nav id="breadcrumbs"></nav>
 
         <div id="inicio-section">
             <section class="image-section">
-                <img src="./img/molinos.jpg" alt="molinos" class="molinos-image">
-                <img src="./img/flecha.png" alt="flecha1" class="flecha-left">
-                <img src="./img/flecha.png" alt="flecha2" class="flecha-right">
+                <!-- Contenedor inicialmente oculto para la galería -->
+                <div id="gallery-container" style="display: none;">
+                    <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <img src="./img/molinos.jpg" class="d-block w-100 galeria-imagen" alt="molinos">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="./img/publi1.jpg" class="d-block w-100 galeria-imagen" alt="img2">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="./img/publi3.jpg" class="d-block w-100 galeria-imagen" alt="img3">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="./img/publiw.webp" class="d-block w-100 galeria-imagen" alt="img3">
+                            </div>
+                        </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                        </button>
+                    </div>
+                </div>
             </section>
-
+        
             <div class="line"></div>
             <div id="inicio" class="inicio"></div>
             <div id="central" class="centro"></div>
         </div>
+        
+
         <section id="nosotros-section" class="nosotros" itemscope itemtype="http://schema.org/Organization">
             <header>
-                <h1>UNA EXPLOSION DE SABORES CON NUESTRO TOQUE ESPECIAL</h1><br>
+                <h1 data-translate="nosotros_h1">UNA EXPLOSION DE SABORES CON NUESTRO TOQUE ESPECIAL</h1><br>
             </header>
             <article itemprop="description">
 
-                <h2>Descubre la Esencia de Castilla-La Mancha en Cada Bocado</h2>
+                <h2 data-translate="nosotros_h2">Descubre la Esencia de Castilla-La Mancha en Cada Bocado</h2>
 
-                <p>En <span itemprop="name">Gastromancha</span>, nos enorgullece ofrecerte una experiencia gastronómica
+                <p data-translate="nosotros_p1">En Gastromancha, nos enorgullece ofrecerte una experiencia gastronómica
                     auténtica, donde
                     cada plato cuenta una historia arraigada en la tradición y el sabor inconfundible de Castilla-La
                     Mancha.
                     Nuestra Filosofía.</p>
 
-                <p>En el corazón de nuestra cocina yace un profundo respeto por la tierra y sus ingredientes. Nos
+                <p data-translate="nosotros_p2">En el corazón de nuestra cocina yace un profundo respeto por la tierra y
+                    sus ingredientes. Nos
                     dedicamos.
                     a preservar las recetas tradicionales, realzando los sabores locales con un toque de creatividad
                     contemporánea.
                     La Tierra de Don Quijote en tu Plato.</p>
 
-                <p>Desde las vastas llanuras doradas hasta las colinas salpicadas de viñedos, Castilla-La Mancha es una
+                <p data-translate="nosotros_p3">Desde las vastas llanuras doradas hasta las colinas salpicadas de
+                    viñedos, Castilla-La Mancha es una
                     región rica en diversidad gastronómica. En cada plato, capturamos la esencia de esta tierra única,
                     llevando a tu mesa la auténtica pasión culinaria de la región.
                     Nuestro Compromiso.</p>
 
                 <div id="imagen3D-container" class="imagen3D-container"></div>
 
-                <p>En Gastromancha, no solo te ofrecemos una comida excepcional, sino también una experiencia
+                <p data-translate="nosotros_p4">En Gastromancha, no solo te ofrecemos una comida excepcional, sino
+                    también una experiencia
                     memorable llena de hospitalidad y calidez castellano-manchega. Cada visita es una oportunidad para
                     sumergirte en la cultura y el sabor de esta región única.
                     Únete a Nosotros</p>
 
-                <p>Te invitamos a embarcarte en un viaje culinario a través de Castilla-La Mancha en Gastromancha.
+                <p data-translate="nosotros_p5">Te invitamos a embarcarte en un viaje culinario a través de Castilla-La
+                    Mancha en Gastromancha.
                     Descubre la magia de nuestra tierra en cada bocado y déjate llevar por la pasión y el
                     encanto de nuestra cocina.</p>
 
-                <h2>¡Bienvenido a Gastromancha, donde cada plato es un tributo a la belleza y la autenticidad
+                <h2 data-translate="nosotros_h2_final">¡Bienvenido a Gastromancha, donde cada plato es un tributo a la
+                    belleza y la autenticidad
                     de Castilla-La Mancha!</h2>
+
+                <h1 class="ubicacion"><a
+                        href="https://www.google.es/maps/place/Bar+Zacar%C3%ADas/@38.9645113,-3.8905032,76m/data=!3m1!1e3!4m6!3m5!1s0xd6bdd20a7c99e09:0xba4a2a34af342d94!8m2!3d38.9645996!4d-3.8903046!16s%2Fg%2F11y7rwx3q?entry=ttu"
+                        data-translate="ubicacion" target="_blank">HAGA CLICK AQUÍ PARA VER DÓNDE NOS ENCONTRAMOS</a>
+                </h1>
 
             </article>
         </section>
-        
+
         <div id="reserva-section">
-            <h1>¿Deseando probar nuestros platos? ¡Reserva YA!</h1>
+            <h1 data-translate="reserva_title">¿Deseando probar nuestros platos? ¡Reserva YA!</h1>
             <div class="progress-bar-container">
                 <div class="progress-bar" style="width: 0;"></div>
             </div>
             <form id="reserva-form">
                 <div class="mb-3 form-group">
-                    <label for="nombre" class="form-label">Nombre:</label>
-                    <input type="text" id="nombre" name="nombre" placeholder="Nombre" required pattern="[A-Za-zÁÉÍÓÚáéíóú\s]+" class="form-control">
-                    <div class="valid-feedback">¡Correcto!</div>
-                    <div class="invalid-feedback">Por favor, introduce un nombre válido.</div>
+                    <label for="nombre" class="form-label" data-translate="nombre_label">Nombre:</label>
+                    <input type="text" id="nombre" name="nombre" placeholder="Nombre" required
+                        pattern="[A-Za-zÁÉÍÓÚáéíóú\s]+" class="form-control" data-translate="nombre_placeholder">
+                    <div class="valid-feedback" data-translate="valid_feedback">¡Correcto!</div>
+                    <div class="invalid-feedback" data-translate="invalid_feedback_name">Por favor, introduce un nombre
+                        válido.</div>
                 </div>
-            
+
                 <div class="mb-3 form-group">
-                    <label for="email" class="form-label">Correo Electrónico:</label>
-                    <input type="email" id="email" name="email" placeholder="Email" required class="form-control">
-                    <div class="valid-feedback">¡Correcto!</div>
-                    <div class="invalid-feedback">Por favor, introduce un correo electrónico válido.</div>
+                    <label for="email" class="form-label">Email:</label>
+                    <input type="email" id="email" name="email" placeholder="Email" required class="form-control"
+                        data-translate="email_placeholder">
+                    <div class="valid-feedback" data-translate="valid_feedback">¡Correcto!</div>
+                    <div class="invalid-feedback" data-translate="invalid_feedback_email">Por favor, introduce un correo
+                        electrónico válido.</div>
                 </div>
-            
+
                 <div class="mb-3 form-group">
-                    <label for="telefono" class="form-label">Teléfono:</label>
-                    <input type="tel" id="telefono" name="telefono" placeholder="Teléfono" required pattern="[0-9]{9}" class="form-control">
-                    <div class="valid-feedback">¡Correcto!</div>
-                    <div class="invalid-feedback">Por favor, introduce un número de teléfono válido (9 dígitos).</div>
+                    <label for="telefono" class="form-label" data-translate="phone">Teléfono:</label>
+                    <input type="tel" id="telefono" name="telefono" placeholder="Teléfono"
+                        data-translate="tlf_placeholder" required pattern="[0-9]{9}" class="form-control">
+                    <div class="valid-feedback" data-translate="valid_feedback">¡Correcto!</div>
+                    <div class="invalid-feedback" data-translate="invalid_feedback_phone">Por favor, introduce un número
+                        de teléfono válido (9 dígitos).</div>
                 </div>
-            
+
                 <div class="mb-3 form-group">
-                    <label for="fecha" class="form-label">Fecha:</label>
+                    <label for="fecha" class="form-label" data-translate="date">Fecha:</label>
                     <input type="date" id="fecha" name="fecha" required class="form-control">
-                    <div class="valid-feedback">¡Correcto!</div>
-                    <div class="invalid-feedback">Por favor, introduce una fecha válida.</div>
+                    <div class="valid-feedback" data-translate="valid_feedback">¡Correcto!</div>
+                    <div class="invalid-feedback" data-translate="invalid_feedback_date">Por favor, introduce una fecha
+                        válida.</div>
                 </div>
-            
+
                 <div class="mb-3 form-group">
-                    <label for="hora" class="form-label">Hora:</label>
+                    <label for="hora" class="form-label" data-translate="time">Hora:</label>
                     <input type="time" id="hora" name="hora" required class="form-control">
-                    <div class="valid-feedback">¡Correcto!</div>
-                    <div class="invalid-feedback">Por favor, introduce una hora válida.</div>
+                    <div class="valid-feedback" data-translate="valid_feedback">¡Correcto!</div>
+                    <div class="invalid-feedback" data-translate="invalid_feedback_time">Por favor, introduce una hora
+                        válida.</div>
                 </div>
-            
+
                 <div class="mb-3 form-group">
-                    <label for="personas" class="form-label">Número de Personas:</label>
+                    <label for="personas" class="form-label" data-translate="people">Número de Personas:</label>
                     <input type="number" id="personas" name="personas" min="1" required class="form-control">
-                    <div class="valid-feedback">¡Correcto!</div>
-                    <div class="invalid-feedback">Por favor, introduce un número válido de personas (mayor que 0).</div>
+                    <div class="valid-feedback" data-translate="valid_feedback">¡Correcto!</div>
+                    <div class="invalid-feedback" data-translate="invalid_feedback_people">Por favor, introduce un
+                        número válido de personas (mayor que 0).</div>
                 </div>
-            
+
                 <div class="mb-3">
-                    <label for="info" class="form-label">Información adicional:</label>
-                    <textarea name="info" id="info" cols="10" rows="5" placeholder="Información adicional" class="form-control"></textarea>
+                    <label for="info" class="form-label" data-translate="infoAdd">Información adicional:</label>
+                    <textarea name="info" id="info" cols="10" rows="5" placeholder="Información adicional"
+                        data-translate="adicional_placeholder" class="form-control"></textarea>
                 </div>
-            
+
                 <div id="campos-adicionales" style="display: none;">
                     <div class="mb-3 form-group">
-                        <label for="numero-tarjeta" class="form-label">Número de Tarjeta:</label>
-                        <input type="text" id="numero-tarjeta" name="numero-tarjeta" placeholder="Número de Tarjeta" required class="form-control">
-                        <div class="valid-feedback">¡Correcto!</div>
-                        <div class="invalid-feedback">Por favor, introduce un número de tarjeta válido.</div>
+                        <label for="numero-tarjeta" class="form-label" data-translate="numTarjeta">Número de
+                            Tarjeta:</label>
+                        <input type="text" id="numero-tarjeta" name="numero-tarjeta" placeholder="Número de Tarjeta"
+                            required class="form-control" data-translate="tarjeta_placeholder">
+                        <div class="valid-feedback" data-translate="valid_feedback">¡Correcto!</div>
+                        <div class="invalid-feedback" data-translate="invalid_feedback_numTarjeta">Por favor, introduce
+                            un número de tarjeta válido.</div>
                     </div>
-            
+
                     <div class="mb-3 form-group">
-                        <label for="fecha-caducidad" class="form-label">Fecha de caducidad:</label>
+                        <label for="fecha-caducidad" class="form-label" data-translate="caducidad">Fecha de
+                            caducidad:</label>
                         <input type="date" id="fecha-caducidad" name="fecha-caducidad" required class="form-control">
-                        <div class="valid-feedback">¡Correcto!</div>
-                        <div class="invalid-feedback">Por favor, introduce una fecha de caducidad válida.</div>
+                        <div class="valid-feedback" data-translate="valid_feedback">¡Correcto!</div>
+                        <div class="invalid-feedback" data-translate="invalid_feedback_caducidad">Por favor, introduce
+                            una fecha de caducidad válida.</div>
                     </div>
-            
+
                     <div class="mb-3 form-group">
-                        <label for="cvv" class="form-label">CVV (Reverso de la tarjeta):</label>
-                        <input type="text" id="cvv" name="cvv" placeholder="CVV" required class="form-control">
-                        <div class="valid-feedback">¡Correcto!</div>
-                        <div class="invalid-feedback">Por favor, introduce un CVV válido (3 dígitos).</div>
+                        <label for="cvv" class="form-label" data-translate="cvv">CVV (Reverso de la tarjeta):</label>
+                        <input type="text" id="cvv" name="cvv" placeholder="CVV" data-translate="cvv_placeholder"
+                            required class="form-control">
+                        <div class="valid-feedback" data-translate="valid_feedback">¡Correcto!</div>
+                        <div class="invalid-feedback" data-translate="invalid_feedback_cvv">Por favor, introduce un CVV
+                            válido (3 dígitos).</div>
                     </div>
-            
+
                     <div class="mb-3 form-group">
-                        <label for="importe" class="form-label">Importe total:</label>
-                        <input type="text" id="importe" name="importe" placeholder="50.00" readonly class="form-control">
+                        <label for="importe" class="form-label" data-translate="total">Importe total:</label>
+                        <input type="text" id="importe" name="importe" placeholder="50.00" readonly
+                            class="form-control">
                     </div>
                 </div>
-            
-                <button type="submit" id="siguiente" class="btn btn-primary">Siguiente</button>
-                <button type="button" id="volver" style="display: none;" class="btn btn-secondary">Volver</button>
-                <button type="button" id="confirmar" style="display: none;" class="btn btn-success">Confirmar</button>
+
+                <button type="submit" id="siguiente" class="btn btn-primary"
+                    data-translate="siguiente_btn">Siguiente</button>
+                <button type="button" id="volver" style="display: none;" class="btn btn-secondary"
+                    data-translate="volver_btn">Volver</button>
+                <button type="button" id="confirmar" style="display: none;" class="btn btn-success"
+                    data-translate="confirmar_btn">Confirmar</button>
             </form>
         </div>
-        
+
         <div class="modal fade" id="confirmacionModal" tabindex="-1" aria-labelledby="confirmacionModalLabel"
             aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="confirmacionModalLabel">Confirmación de compra</h5>
+                        <h5 class="modal-title" id="confirmacionModalLabel" data-translate="confirmaCompra">Confirmación
+                            de compra</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
-                    <div class="modal-body">
+                    <div class="modal-body" data-translate="confirmarPregunta">
                         ¿Estás seguro de que deseas confirmar la compra?
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                        <button type="button" class="btn btn-primary" id="confirmarCompra">Confirmar</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"
+                            data-translate="cancelar">Cancelar</button>
+                        <button type="button" class="btn btn-primary" id="confirmarCompra"
+                            data-translate="confirmarBoton">Confirmar</button>
                     </div>
                 </div>
             </div>
         </div>
-        
+
 
     </main>
     <footer>
         <div class="footer-container">
-            <h1>SÍGUENOS EN NUESTRAS REDES SOCIALES</h1>
+            <h1 data-translate="siguenos_title">SÍGUENOS EN NUESTRAS REDES SOCIALES</h1>
             <div class="redes1">
                 <img src="./img/insta.png" alt="instagram">
             </div>
@@ -232,7 +308,7 @@
             <img src="./img/gmo.png" alt="gmo">
         </div>
     </footer>
-    <a href="./img/mapa_web.JPG" target="_blank" class="mapa_web">Mostrar mapa web
+    <a href="./img/mapa_web.JPG" target="_blank" class="mapa_web" data-translate="mapa">Mostrar mapa web
     </a>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
@@ -243,6 +319,7 @@
     <script src="./js/360/360.js"></script>
     <script type="module" src="./js/360/formulario.js"></script>
     <script src="./js/360/script.js"></script>
+    <script src="./languages/script.js"></script>
 </body>
 
 </html>

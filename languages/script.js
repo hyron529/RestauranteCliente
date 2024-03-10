@@ -1,0 +1,130 @@
+
+function changeLanguage(language) {
+  var elementsToTranslate = document.querySelectorAll('[data-translate]');
+
+  var translations = {
+      'es': {
+          'title': 'RESTAURANTE GASTROMANCHA',
+          'subtitle': 'Adaptamos la gastronomía de otros países con productos típicos de nuestra tierra',
+          'inicio': 'INICIO',
+          'nosotros': 'NOSOTROS',
+          'reservas': 'RESERVAS',
+          'reserva_title': '¿Deseando probar nuestros platos? ¡Reserva YA!',
+          'nombre_label': 'Nombre:',
+          
+          'phone': 'Teléfono:',
+          'date': 'Fecha:',
+          'time': 'Hora:',
+          'people': 'Número de Personas:',
+          'infoAdd': 'Información adicional:',
+          'numTarjeta': 'Número de Tarjeta:',
+          'caducidad': 'Fecha de caducidad:',
+          'cvv': 'CVV (Reverso de la tarjeta):',
+          'total': 'Importe Total:',
+          'valid_feedback': '¡Correcto!',
+          'invalid_feedback_name': 'Por favor, introduce un nombre válido.',
+          'invalid_feedback_email': 'Por favor, introduce un correo electrónico válido.',
+          'invalid_feedback_phone': 'Por favor, introduce un número de teléfono válido (9 dígitos).',
+          'invalid_feedback_date': 'Por favor, introduce una fecha válida.',
+          'invalid_feedback_time': 'Por favor, introduce una hora válida.',
+          'invalid_feedback_people': 'Por favor, introduce un número válido de personas (mayor que 0).',
+          'invalid_feedback_numTarjeta': 'Por favor, introduce un número de tarjeta válido.',
+          'invalid_feedback_caducidad': 'Por favor, introduce una fecha de caducidad válida.',
+          'invalid_feedback_cvv': 'Por favor, introduce un CVV válido (3 dígitos).',
+          'confirmaCompra': 'Confirmación de compra',
+          'confirmarPregunta': '¿Estás seguro de que deseas confirmar la compra?',
+          'cancelar': 'Cancelar',
+          'confirmarBoton': 'Confirmar',
+
+          'nombre_placeholder': 'Nombre',
+          'email_placeholder': 'Email',
+          'tlf_placeholder': 'Teléfono',
+          'adicional_placeholder': 'Información adicional',
+          'tarjeta_placeholder': 'Número de tarjeta',
+          'cvv_placeholder': 'CVV',
+
+          'nosotros_h1': 'UNA EXPLOSION DE SABORES CON NUESTRO TOQUE ESPECIAL',
+          'nosotros_h2': 'Descubre la Esencia de Castilla-La Mancha en Cada Bocado',
+          'nosotros_p1': 'En Gastromancha, nos enorgullece ofrecerte una experiencia gastronómica auténtica, donde cada plato cuenta una historia arraigada en la tradición y el sabor inconfundible de Castilla-La Mancha. Nuestra Filosofía.',
+          'nosotros_p2': 'En el corazón de nuestra cocina yace un profundo respeto por la tierra y sus ingredientes. Nos dedicamos. a preservar las recetas tradicionales, realzando los sabores locales con un toque de creatividad contemporánea. La Tierra de Don Quijote en tu Plato.',
+          'nosotros_p3': 'Desde las vastas llanuras doradas hasta las colinas salpicadas de viñedos, Castilla-La Mancha es una región rica en diversidad gastronómica. En cada plato, capturamos la esencia de esta tierra única, llevando a tu mesa la auténtica pasión culinaria de la región. Nuestro Compromiso.',
+          'nosotros_p4': 'En Gastromancha, no solo te ofrecemos una comida excepcional, sino también una experiencia memorable llena de hospitalidad y calidez castellano-manchega. Cada visita es una oportunidad para sumergirte en la cultura y el sabor de esta región única. Únete a Nosotros',
+          'nosotros_p5': 'Te invitamos a embarcarte en un viaje culinario a través de Castilla-La Mancha en Gastromancha. Descubre la magia de nuestra tierra en cada bocado y déjate llevar por la pasión y el encanto de nuestra cocina.',
+          'nosotros_h2_final': '¡Bienvenido a Gastromancha, donde cada plato es un tributo a la belleza y la autenticidad de Castilla-La Mancha!',
+
+          'ubicacion': 'HAGA CLICK AQUÍ PARA VER DÓNDE NOS ENCONTRAMOS',
+          'galeria': 'GALERÍA',
+
+          'siguiente_btn': 'Siguiente',
+          'volver_btn': 'Volver',
+          'confirmar_btn': 'Confirmar',
+          'siguenos_title': 'SÍGUENOS EN NUESTRAS REDES SOCIALES',
+          'mapa': 'Mostrar mapa web',
+      },
+      'en': {
+          'title': 'GASTROMANCHA RESTAURANT',
+          'subtitle': 'We adapt the cuisine of other countries with typical products from our land',
+          'inicio': 'HOME',
+          'nosotros': 'ABOUT US',
+          'reservas': 'BOOKINGS',
+          'reserva_title': 'Want to try our dishes? Book NOW!',
+          'nombre_label': 'Name:',
+
+          'phone': 'Phone:',
+          'date': 'Date:',
+          'time': 'Time:',
+          'people': 'Number of people:',
+          'infoAdd': 'Additional info:',
+          'numTarjeta': 'Card number:',
+          'caducidad': 'Date of expiry:',
+          'cvv': 'CVV (Reverse of your card):',
+          'total': 'Total:',
+          'valid_feedback': 'Correct!',
+          'invalid_feedback_name': 'Please, write a valid name.',
+          'invalid_feedback_email': 'Please, write a valid email.',
+          'invalid_feedback_phone': 'Please, write a valid phone.',
+          'invalid_feedback_date': 'Please, write a valid date of reservation.',
+          'invalid_feedback_time': 'Please, write a valid time.',
+          'invalid_feedback_people': 'Please, write a valid number of people.',
+          'invalid_feedback_numTarjeta': 'Please, write a valid card number.',
+          'invalid_feedback_caducidad': 'Please, write a valid date of expiry.',
+          'invalid_feedback_cvv': 'Please, write a valid CVV number.',
+          'confirmaCompra': 'Confirm your reservation',
+          'confirmarPregunta': 'Are you sure you want to confirm the reservation?',
+          'cancelar': 'Cancel',
+          'confirmarBoton': 'Confirm',
+          
+          'nombre_placeholder': 'Name',
+          'email_placeholder': 'Email',
+          'tlf_placeholder': 'Phone',
+          'adicional_placeholder': 'Additional info',
+          'tarjeta_placeholder': 'Card number',
+          'cvv_placeholder': 'CVV',
+
+          'nosotros_h1': 'AN EXPLOSION OF FLAVORS WITH OUR SPECIAL TOUCH',
+          'nosotros_h2': 'Discover the Essence of Castilla-La Mancha in Every Bite',
+          'nosotros_h1': 'AN EXPLOSION OF FLAVORS WITH OUR SPECIAL TOUCH',
+          'nosotros_h2': 'Discover the Essence of Castilla-La Mancha in Every Bite',
+          'nosotros_p1': 'At Gastromancha, we are proud to offer you an authentic gastronomic experience, where each dish tells a story rooted in the tradition and unmistakable flavor of Castilla-La Mancha. Our philosophy.',
+          'nosotros_p2': 'At the heart of our cuisine lies a deep respect for the land and its ingredients. Our services are. to preserve traditional recipes, enhancing local flavors with a touch of contemporary creativity. The Land of Don Quixote on your Plate.',
+          'nosotros_p3': 'From the vast golden plains to the vineyard-dotted hills, Castilla-La Mancha is a region rich in gastronomic diversity. In each dish, we capture the essence of this unique land, bringing the authentic culinary passion of the region to your table. Our Commitment.',
+          'nosotros_p4': 'At Gastromancha, we not only offer you exceptional food, but also a memorable experience full of Castilian-La Mancha hospitality and warmth. Each visit is an opportunity to immerse yourself in the culture and flavor of this unique region. Join us',
+          'nosotros_p5': 'We invite you to embark on a culinary journey through Castilla-La Mancha in Gastromancha. Discover the magic of our land in every bite and let yourself be carried away by the passion and charm of our cuisine.',
+          'nosotros_h2_final': 'Welcome to Gastromancha, where each dish is a tribute to the beauty and authenticity of Castilla-La Mancha!',
+
+          'ubicacion': 'CLICK HERE TO SEE WHERE WE ARE',
+          'galeria': 'GALLERY',
+
+          'siguiente_btn': 'Next',
+          'volver_btn': 'Back',
+          'confirmar_btn': 'Confirm',
+          'siguenos_title': 'FOLLOW US ON SOCIAL MEDIA',
+          'mapa': 'Web-map',
+      }
+  };
+
+  elementsToTranslate.forEach(function(element) {
+      var key = element.getAttribute('data-translate');
+      element.textContent = translations[language][key];
+  });
+}
